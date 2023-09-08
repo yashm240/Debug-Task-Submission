@@ -1,0 +1,61 @@
+Code 1:
+
+def reverse_string(s):
+    reversed_str = ""
+    for i in range(len(s) - 1, -1, -1):
+        reversed_str += s[i]
+    return reversed_str
+
+def main():
+    input_string = "Hello, world!"
+    reversed_string = reverse_string(input_string)
+    print(f"Reversed string: {reversed_string}")
+
+if __name__ == "__main__":
+    main()
+
+#The code seems correct logically , only the name of the variable “reversed” is changed to “reversed_str” as the term “reversed” is a preserved keyword for a built-in python function reversed().
+
+
+
+Code 2:
+
+def get_age():
+    age = input("Please enter your age: ")
+    if age.isnumeric() and int(age) >= 18:
+        return int(age)
+    else:
+        return None
+
+def main():
+    age = get_age()
+    if age:
+        print(f"You are {age} years old and eligible.")
+    else:
+        print("Invalid input. You must be at least 18 years old.")
+
+if __name__ == "__main__":
+    main()
+
+#Here typecasting for the variable age is required as default datatype of age belongs to String and when compared to 18 it is required to convert to int.
+
+Code 3:
+
+def read_and_write_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            content = file.read()
+        with open("uppercase_" + filename, 'w') as new_file:
+            new_file.write(content.upper())
+        print(f"File '{filename}' processed successfully.")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
+def main():
+    filename = "sample.txt"
+    read_and_write_file(filename)
+
+if __name__ == "__main__":
+    main()
+
+#When we open the file in write mode (‘w’), it will truncate the file, effectively erasing its contents. This means that if there is an issue during the writing process (e.g., an exception is raised), we will lose the original content of the file. If this is not the desired behavior, we should consider opening the file in a mode that does not truncate it, such as append mode ('a'), or writing to a different file.
